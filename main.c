@@ -1,16 +1,4 @@
-/**
- Question:
- Write a C program that calculates the average of marks obtained by a student in 3 subjects.
- That is physics, chemistry and maths. Assume for each subject, 4 different tests were conducted;
- - coursework
- - assignment
- - mid-term
- - end-of-term
- */
-int registerMarks();
-
-
- #include <stdio.h>
+#include <stdio.h>
  int main(){
 
     int mathsArray[4];
