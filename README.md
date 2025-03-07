@@ -8,5 +8,5 @@ MUKENDI MUKENDI OLIVIEFR 012240088
 KUGONZA TEDDY  022240876
 
 
-OUTPUT:
+OUTPUT:NUMBER 2
 ![Capture](https://github.com/user-attachments/assets/a9959b12-563c-4c2a-9703-8b1fec976b3d)
