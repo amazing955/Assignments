@@ -29,6 +29,8 @@ OUTPUT:NUMBER 2
 
 ![arr 2](https://github.com/user-attachments/assets/b55232c2-a821-47a2-914e-417a6fc5d1df)
 
+
+SECOND ASSIGNMENT
 ![traversing](https://github.com/user-attachments/assets/523839b1-7fb0-4b94-bd1d-6b3da1b8dc6e)
 
 
