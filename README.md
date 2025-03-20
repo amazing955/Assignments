@@ -23,12 +23,12 @@ OUTPUT:NUMBER 2
 
 ![Screenshot 2025-03-21 002256](https://github.com/user-attachments/assets/e3756f24-692b-495e-b741-aed0e6c6ac73)
 
-![traversing](https://github.com/user-attachments/assets/523839b1-7fb0-4b94-bd1d-6b3da1b8dc6e)
+
 
 ![arr 1](https://github.com/user-attachments/assets/039a094a-51f5-4725-ae72-a2d191672563)
 
 ![arr 2](https://github.com/user-attachments/assets/b55232c2-a821-47a2-914e-417a6fc5d1df)
 
-
+![traversing](https://github.com/user-attachments/assets/523839b1-7fb0-4b94-bd1d-6b3da1b8dc6e)
 
 
