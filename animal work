@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int main() {
+    char z[3][30];  
+    char p[3][30];
+
+    printf("Enter the domestic animals:\n");
+    for(int x = 0; x < 3; x++) {
+        scanf("%s", z[x]);  
+    }
+
+    printf("Enter the wild animals:\n");
+    for(int s = 0; s < 3; s++) {
+        scanf("%s", p[s]);  
+    }
+
+    printf("All animals are here:\n");
+    for(int i = 0; i < 3; i++) {
+        printf("%s\n", z[i]);  
+        printf("%s\n", p[i]);  
+    }
+
+    return 0;
+}
