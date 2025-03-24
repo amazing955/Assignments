@@ -8,6 +8,7 @@ MUKENDI MUKENDI OLIVIER 012240088
 KUGONZA TEDDY  022240876
 output:number1
 
+![WhatsApp Image 2025-03-24 at 22 22 09_8b2eef39](https://github.com/user-attachments/assets/4d744e9e-3e86-45ff-9175-6856879c9756)
 
 
 OUTPUT:NUMBER 2
