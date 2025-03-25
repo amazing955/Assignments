@@ -1,25 +1,25 @@
 #include <stdio.h>
 
 int main() {
-    char z[3][30];  
-    char p[3][30];
+    char z[4][10];  
+    char p[4][10];
 
     printf("Enter the domestic animals:\n");
-    for(int x = 0; x < 3; x++) {
-        scanf("%s", z[x]);  
+    for(int x = 0; x < 4; x++) {
+        scanf("%s",&z[x]);  
     }
 
     printf("Enter the wild animals:\n");
-    for(int s = 0; s < 3; s++) {
-        scanf("%s", p[s]);  
+    for(int s = 0; s < 4; s++) {
+        scanf("%s",&p[s]);  
     }
 
-    printf("All animals are here:\n");
-    for(int i = 0; i < 3; i++) {
-        printf("%s\n", z[i]); 
+    printf("list of all animals:\n");
+    for(int i = 0; i < 4; i++) {
+        printf("%s\t", z[i]); 
 printf("\t");
         printf("%s\n", p[i]);  
     }
-
+printf("...END OF PROGRAM...");
     return 0;
 }
