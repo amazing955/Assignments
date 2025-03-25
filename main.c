@@ -1,4 +1,5 @@
 #include <stdio.h>
+registermarks();
  int main(){
 
     int mathsArray[4];
