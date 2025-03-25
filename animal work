@@ -16,7 +16,8 @@ int main() {
 
     printf("All animals are here:\n");
     for(int i = 0; i < 3; i++) {
-        printf("%s\n", z[i]);  
+        printf("%s\n", z[i]); 
+printf("\t");
         printf("%s\n", p[i]);  
     }
 
