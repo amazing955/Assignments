@@ -16,7 +16,7 @@ int main()
     scanf("%d",&b);
     printf("before swap:\n a = %d\n b = %d\n",a,b);
     swap(a, b);
-    printf("after swap:\n a = %d\n b = %d",a,b);
+    printf("after swap:\n a = %d\n b = %d",b,a);
         return 0;
 
     }
