@@ -1,0 +1,61 @@
+import java.util.Scanner;
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("1. Register Farmer\n");
+            System.out.println("2. Deposit\n");
+            System.out.println("3. Withdraw\n");
+            System.out.println("4. Check Balance\n");
+            System.out.println("5. View Transaction History\n");
+            System.out.println("6. View Recent Transaction\n");
+            System.out.println("7. Exit\n");
+            System.out.println("\nSelect an option:\n");
+
+            int choice = scanner.nextInt();
+
+
+            switch (choice) {
+                case 1:
+                    Money.addFarmer();  // Register a new farmer
+                    break;
+                case 2:
+                    System.out.println("Enter Farmer ID to deposit:\n");
+                    int depositId = scanner.nextInt();
+                    Money.deposit(depositId);
+                    break;
+                case 3:
+                    System.out.println("Enter Farmer ID to withdraw:\n");
+                    int withdrawId = scanner.nextInt();
+                    Money.withdraw(withdrawId);
+                    break;
+                case 4:
+                    System.out.println("Enter Farmer ID to check balance:\n");
+                    int balanceId = scanner.nextInt();
+                    Money.balance(balanceId);
+                    break;
+                case 5:
+                    System.out.println("Enter Farmer ID to view transaction history:\n");
+                    int historyId = scanner.nextInt();
+                    Money.history(historyId);
+                    break;
+                case 6:
+                    System.out.println("Enter Farmer ID to view recent transaction:\n");
+                    int recentId = scanner.nextInt();
+                    Money.recentTransaction(recentId);
+                    break;
+                case 7:
+                    System.out.println("exiting program....\n");
+                    break;
+                default:
+                    System.out.println("Invalid choice.");
+            }
+        }
+
+
+    }
+}
