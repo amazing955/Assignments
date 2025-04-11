@@ -1,0 +1,245 @@
+import java.util.Scanner;
+import java.util.LinkedList;
+import java.util.Stack;
+
+public class Money {
+
+    static class Farmer {
+        int id;
+        String name;
+        double balance;
+        LinkedList<String> transactionHistory; // LinkedList to store transaction history
+        Stack<String> recentTransactions; // Stack for recent transactions
+
+        public Farmer(int id, String name) {
+            this.id = id;
+            this.name = name;
+            this.balance = 0.0;
+            this.transactionHistory = new LinkedList<>();
+            this.recentTransactions = new Stack<>();
+        }
+
+        // Method to update balance and store transaction history
+        public void updateBalance(double amount, String transactionType, String paymentMethod) {
+            if (transactionType.equals("Deposit")) {
+                balance += amount;
+            } else if (transactionType.equals("Withdraw")) {
+                balance -= amount;
+            }
+            String transaction = transactionType + " of " + amount + " via " + paymentMethod + ". New Balance: " + balance;
+            transactionHistory.add(transaction);
+            recentTransactions.push(transaction);
+        }
+
+        // Method to print transaction history
+        public void printTransactionHistory() {
+            System.out.println("Transaction History for Farmer ID: " + id);
+            for (String transaction : transactionHistory) {
+                System.out.println(transaction);
+            }
+        }
+
+        // Method to print the most recent transaction
+        public void printRecentTransaction() {
+            if (!recentTransactions.isEmpty()) {
+                System.out.println("Most recent transaction for Farmer ID: " + id);
+                System.out.println(recentTransactions.peek());
+            } else {
+                System.out.println("No recent transactions.");
+            }
+        }
+    }
+
+    // LinkedList to store all registered farmers
+    static LinkedList<Farmer> farmers = new LinkedList<>();
+
+    // Method to register a farmer with user input
+    public static void addFarmer() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Farmer ID:");
+        int id = scanner.nextInt();
+        scanner.nextLine();  // Consume newline character after number input
+
+        System.out.println("Enter Farmer Name:");
+        String name = scanner.nextLine();
+
+        // Create new Farmer object and add to the farmers list
+        Farmer farmer = new Farmer(id, name);
+        farmers.add(farmer);
+
+        System.out.println("Farmer registration successful: " + name + " (ID: " + id + ")");
+    }
+
+    // Method to find a farmer by ID
+    public static Farmer findFarmerById(int id) {
+        for (Farmer farmer : farmers) {
+            if (farmer.id == id) {
+                return farmer;
+            }
+        }
+        return null; // Farmer not found
+    }
+
+    // Method to deposit money
+    public static void deposit(int id) {
+        Farmer farmer = findFarmerById(id);
+        if (farmer != null) {
+            Scanner c = new Scanner(System.in);
+            System.out.println("Deposit via \n1.Mobile Money/Airtel Money to SACCO\n2.Bank to SACCO");
+            int choice = c.nextInt();
+            double amount;
+            String paymentMethod = "";
+            if (choice == 1) {
+                System.out.println("Enter telephone number:");
+                int number = c.nextInt();
+                System.out.println("Enter amount to deposit:");
+                amount = c.nextDouble();
+                paymentMethod = "Mobile Money/Airtel Money from " + number;
+            } else if (choice == 2) {
+                System.out.println("Enter account number:");
+                int ac_no = c.nextInt();
+                System.out.println("Enter amount to deposit:");
+                amount = c.nextDouble();
+                paymentMethod = "Bank Account from " + ac_no;
+            } else {
+                System.out.println("Invalid choice.");
+                return;
+            }
+            farmer.updateBalance(amount, "Deposit", paymentMethod);
+            System.out.println("Deposit successful. New balance: " + farmer.balance);
+        } else {
+            System.out.println("Farmer does not exist.");
+        }
+    }
+
+    // Method to withdraw money
+    public static void withdraw(int id) {
+        Farmer farmer = findFarmerById(id);
+        if (farmer != null) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Enter the amount to withdraw:");
+            double amount = scanner.nextDouble();
+            if (amount > farmer.balance) {
+                System.out.println("Insufficient funds.");
+                return;
+            }
+            System.out.println("Withdraw via \n1.Mobile Money/Airtel Money\n2.Bank Account");
+            int choice = scanner.nextInt();
+            String paymentMethod = "";
+            if (choice == 1) {
+                System.out.println("Enter number:");
+                int phone = scanner.nextInt();
+                System.out.println("Confirm number:");
+                int phone2 = scanner.nextInt();
+                if (phone != phone2) {
+                    System.out.println("Number mismatch.");
+                    return;
+                }
+                paymentMethod = "Mobile Money/Airtel Money to " + phone;
+            } else if (choice == 2) {
+                System.out.println("Enter account number:");
+                int acc_no = scanner.nextInt();
+                System.out.println("Confirm account number:");
+                int acc_no2 = scanner.nextInt();
+                if (acc_no != acc_no2) {
+                    System.out.println("Account number mismatch.");
+                    return;
+                }
+                paymentMethod = "Bank Account to " + acc_no;
+            } else {
+                System.out.println("Invalid choice.");
+                return;
+            }
+            farmer.updateBalance(amount, "Withdraw", paymentMethod);
+            System.out.println("Withdrawal successful. New balance: " + farmer.balance);
+        } else {
+            System.out.println("Farmer does not exist.");
+        }
+    }
+
+    // Method to check balance
+    public static void balance(int id) {
+        Farmer farmer = findFarmerById(id);
+        if (farmer != null) {
+            System.out.println("Current balance for Farmer ID: " + id + " is " + farmer.balance);
+        } else {
+            System.out.println("Farmer does not exist.");
+        }
+    }
+
+    // Method to view transaction history
+    public static void history(int id) {
+        Farmer farmer = findFarmerById(id);
+        if (farmer != null) {
+            farmer.printTransactionHistory();
+        } else {
+            System.out.println("Farmer does not exist.");
+        }
+    }
+
+    // Method to view the most recent transaction
+    public static void recentTransaction(int id) {
+        Farmer farmer = findFarmerById(id);
+        if (farmer != null) {
+            farmer.printRecentTransaction();
+        } else {
+            System.out.println("Farmer does not exist.");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("\nSelect an option:");
+            System.out.println("1. Register Farmer");
+            System.out.println("2. Deposit");
+            System.out.println("3. Withdraw");
+            System.out.println("4. Check Balance");
+            System.out.println("5. View Transaction History");
+            System.out.println("6. View Recent Transaction");
+            System.out.println("7. Exit");
+
+            int choice = scanner.nextInt();
+
+            if (choice == 7) {
+                break;
+            }
+
+            switch (choice) {
+                case 1:
+                    addFarmer();  // Register a new farmer
+                    break;
+                case 2:
+                    System.out.println("Enter Farmer ID to deposit:");
+                    int depositId = scanner.nextInt();
+                    deposit(depositId);
+                    break;
+                case 3:
+                    System.out.println("Enter Farmer ID to withdraw:");
+                    int withdrawId = scanner.nextInt();
+                    withdraw(withdrawId);
+                    break;
+                case 4:
+                    System.out.println("Enter Farmer ID to check balance:");
+                    int balanceId = scanner.nextInt();
+                    balance(balanceId);
+                    break;
+                case 5:
+                    System.out.println("Enter Farmer ID to view transaction history:");
+                    int historyId = scanner.nextInt();
+                    history(historyId);
+                    break;
+                case 6:
+                    System.out.println("Enter Farmer ID to view recent transaction:");
+                    int recentId = scanner.nextInt();
+                    recentTransaction(recentId);
+                    break;
+                default:
+                    System.out.println("Invalid choice.");
+            }
+        }
+
+        scanner.close();
+    }
+}
